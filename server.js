@@ -29,6 +29,10 @@ app.get('/afterSubmit', (req,res) => {
     })
 });*/
 
+const compression = require('compression');
+
+app.use(compression());
+
 app.get('/',(req,res) => {
 	
 	var myObj = JSON.parse(fs.readFileSync('utils/home-description.json'));
