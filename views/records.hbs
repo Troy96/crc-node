@@ -1,0 +1,33 @@
+<br/>
+<div class="row">
+<form action=/Records method="GET">
+    <input type="text" name="opt" placeholder="Enter year">
+    <input type="submit">
+</form>
+</div>			
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Company Name</th>
+        <th>Selections</th>
+        <th>Details</th>
+        <th>Batch</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#if users}}
+        {{#each users}}
+            <tr>
+                <td>{{company_name}}</td>
+                <td>{{selections}}</td>
+                <td>{{details}}</td>
+                <td>{{batch}}</td>
+            </tr>
+        {{/each}}
+    {{else}}
+        <tr>
+            <td colspan="4" class="text-center">No data to display.</td>
+        </tr>
+    {{/if}}
+    </tbody>
+</table>

@@ -1,0 +1,47 @@
+body{
+	display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+main{
+    flex: 1 0 auto;
+  }
+nav{
+	background-color: #81539e;
+}
+.text-style-links{
+	font-family: 'Josefin Sans', sans-serif;
+}
+.text-style-title{
+	font-family: 'Carter One', cursive;
+}
+.text-align-justify{
+	text-align: justify;
+}
+.bottom-nav-strip{
+	width: 100%;
+	background-color: #6e4573;
+	height: 20px;
+}
+.logo-img{
+	position: absolute;
+	margin-top: -20px;
+	height: 95px;
+}
+.page-footer{
+	background-color: #81539e;
+}
+.page-footer .footer-copyright{
+	background-color: #6e4573;
+}
+#crop-image{
+	height:356px;
+	width:100%;
+}
+.shade{
+	color:grey;
+}
+
+.zoom:hover {
+    transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
