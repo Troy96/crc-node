@@ -45,8 +45,9 @@ app.get('/',(req,res) => {
 	});
 });
 
+
 app.get('/Records', (req,res) => {
-	MongoClient.connect('mongodb://localhost:27017/invertis', (err, client) => {
+	/*MongoClient.connect('mongodb://localhost:27017/invertis', (err, client) => {
 	if(err) {
 		return console.log('Unable to connect to MongoDB Server');
 	}
@@ -63,7 +64,9 @@ app.get('/Records', (req,res) => {
 		})
 	
 	
-});
+});*/
+
+	res.render('maintenance.hbs');
 });
 
 app.get('/Recruiters', (req,res) => {

@@ -24,9 +24,9 @@ nav{
 	height: 20px;
 }
 .logo-img{
-	position: absolute;
-	margin-top: -20px;
-	height: 95px;
+	width: 80%;
+	height: 80%;
+	margin-left: 15px;
 }
 .page-footer{
 	background-color: #81539e;
@@ -44,4 +44,9 @@ nav{
 
 .zoom:hover {
     transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+.maintenance-img{
+	background-image: url('/images/maintenance.jpg');
+	max-width: 70%;
+	max-height: 50%;
 }
