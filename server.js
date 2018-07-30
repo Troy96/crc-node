@@ -34,7 +34,7 @@ app.get('/Records', (req,res) => {
 		return console.log('Unable to connect to MongoDB Server');
 	}
 		var year = req.query.opt;
-		const db = client.db('invertis');
+		const db = client.db('heroku_v954tbjs');
 		db.collection('Records').find({batch:year}).toArray().then((docs) => {
 			res.render('records.hbs',
 				{
