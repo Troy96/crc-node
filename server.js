@@ -34,9 +34,8 @@ app.get('/Records', (req,res) => {
 		return console.log('Unable to connect to MongoDB Server');
 	}
 		var year = req.query.opt;
-		var branch = req.query.opt2;
 		const db = client.db('invertis');
-		db.collection('Records').find({batch:year, details:branch}).toArray().then((docs) => {
+		db.collection('Records').find({batch:year}).toArray().then((docs) => {
 			res.render('records.hbs',
 				{
 					pageTitle:'Placement Records',
