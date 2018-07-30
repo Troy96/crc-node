@@ -43,7 +43,7 @@ app.get('/Records', (req,res) => {
 				}
 				);
 		}, (err) => {
-			res.render('maintenance.hbs');
+			console.log(e.message);
 		});
 	});
 });
