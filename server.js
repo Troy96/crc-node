@@ -6,6 +6,7 @@ const {MongoClient}  = require('mongodb');
 
 const fs =  require('fs');
 var app =  express();
+const 
 
 app.engine('.hbs', expressHbs({defaultLayout: 'layout', extname: '.hbs'}));
 hbs.registerPartials(__dirname+'/views/partials');
@@ -43,7 +44,7 @@ app.get('/Records', (req,res) => {
 				}
 				);
 		}, (err) => {
-			console.log(e.message);
+			console.log(err);
 		});
 	});
 });
