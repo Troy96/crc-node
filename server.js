@@ -1,36 +1,18 @@
 const express = require('express');
-
 const expressHbs = require('express-handlebars');
-
 const hbs = require('hbs');
-
-const fs =  require('fs');
-
 const port = process.env.PORT || 3000;
-
 const {MongoClient}  = require('mongodb');
 
+const fs =  require('fs');
 var app =  express();
 
 app.engine('.hbs', expressHbs({defaultLayout: 'layout', extname: '.hbs'}));
-
 hbs.registerPartials(__dirname+'/views/partials');
-
 app.set('view engine','.hbs');
-
 app.use(express.static(__dirname+'/public'));
 
-/*
-
-app.get('/afterSubmit', (req,res) => {
-	var myText = req.query.myText; //mytext is the name of your input box
-    res.render('display.hbs',{
-    	name: myText
-    })
-});*/
-
 const compression = require('compression');
-
 app.use(compression());
 
 app.get('/',(req,res) => {
@@ -47,26 +29,24 @@ app.get('/',(req,res) => {
 
 
 app.get('/Records', (req,res) => {
-	/*MongoClient.connect('mongodb://localhost:27017/invertis', (err, client) => {
+	MongoClient.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/invertis', (err, client) => {
 	if(err) {
 		return console.log('Unable to connect to MongoDB Server');
 	}
-		
-		console.log('Connected to MongoDB Server');
 		var year = req.query.opt;
-		
+		var branch = req.query.opt2;
 		const db = client.db('invertis');
-		db.collection('Records').find({batch:year}).toArray().then((docs) => {
-			console.log(docs);
-			res.render('records.hbs',{users:docs})
+		db.collection('Records').find({batch:year, details:branch}).toArray().then((docs) => {
+			res.render('records.hbs',
+				{
+					pageTitle:'Placement Records',
+					users:docs
+				}
+				);
 		}, (err) => {
-			console.log('Unable to fetch',err);
-		})
-	
-	
-});*/
-
-	res.render('maintenance.hbs');
+			res.render('maintenance.hbs');
+		});
+	});
 });
 
 app.get('/Recruiters', (req,res) => {

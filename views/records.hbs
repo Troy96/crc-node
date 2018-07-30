@@ -1,13 +1,27 @@
-<br/>
 <div class="row">
-<form action=/Records method="GET">
-    <input type="text" name="opt" placeholder="Enter year">
-    <input type="submit">
-</form>
-</div>			
-<table class="table table-striped">
+<div class="col l4">
+    <h3 class="text-style-title">Placement Records</h3>
+</div>
+
+<div class="col-l4">
+<div class="input-field col s3 offset-s3">
+   <form action="/Records" method="GET">
+    <select name="opt" onchange='if(this.value != 0) { this.form.submit(); }'>
+      <option value="" disabled selected>Choose year</option>
+      <option value="2017">2017</option>
+      <option value="2016">2016</option>
+      <option value="2015">2015</option>
+    </select>
+   </form> 
+  </div>
+  </div>
+
+</div>
+<div class="container">
+<table class="table striped">
     <thead>
     <tr>
+        <th>S.No</th>
         <th>Company Name</th>
         <th>Selections</th>
         <th>Details</th>
@@ -17,7 +31,9 @@
     <tbody>
     {{#if users}}
         {{#each users}}
+
             <tr>
+                <td>{{@index}}</td>
                 <td>{{company_name}}</td>
                 <td>{{selections}}</td>
                 <td>{{details}}</td>
@@ -26,8 +42,9 @@
         {{/each}}
     {{else}}
         <tr>
-            <td colspan="4" class="text-center">No data to display.</td>
+            <td colspan="4" class="text-center">No data to display. (Tip - Choose a year from above)</td>
         </tr>
     {{/if}}
     </tbody>
 </table>
+</div>
