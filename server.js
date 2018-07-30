@@ -5,8 +5,7 @@ const port = process.env.PORT || 3000;
 const {MongoClient}  = require('mongodb');
 
 const fs =  require('fs');
-var app =  express();
-const 
+var app =  express(); 
 
 app.engine('.hbs', expressHbs({defaultLayout: 'layout', extname: '.hbs'}));
 hbs.registerPartials(__dirname+'/views/partials');
@@ -43,9 +42,10 @@ app.get('/Records', (req,res) => {
 					users:docs
 				}
 				);
-		}, (err) => {
-			console.log(err);
-		});
+		})
+		.catch((e) => {
+			console.log(e);
+		})
 	});
 });
 
