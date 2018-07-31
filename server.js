@@ -29,12 +29,12 @@ app.get('/',(req,res) => {
 
 
 app.get('/Records', (req,res) => {
-	MongoClient.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/invertis', (err, client) => {
+	MongoClient.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/invertis', { useNewUrlParser: true },(err, client) => {
 	if(err) {
 		return console.log('Unable to connect to MongoDB Server');
 	}
 		var year = req.query.opt;
-		const db = client.db('heroku_v954tbjs');
+		const db = client.db('invertis');
 		db.collection('Records').find({batch:year}).toArray().then((docs) => {
 			res.render('records.hbs',
 				{
