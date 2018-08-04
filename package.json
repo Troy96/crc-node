@@ -16,7 +16,8 @@
     "express-handlebars": "^3.0.0",
     "hbs": "^4.0.1",
     "mongodb": "^3.1.1",
-    "mongoose": "^5.2.5"
+    "mongoose": "^5.2.5",
+    "nodemailer": "^4.6.7"
   },
   "devDependencies": {
     "compression": "^1.7.3",

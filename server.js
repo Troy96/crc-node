@@ -15,6 +15,18 @@ app.use(express.static(__dirname+'/public'));
 const compression = require('compression');
 app.use(compression());
 
+var nodemailer = require('nodemailer');
+
+var transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: 'troy0870@gmail.com',
+    pass: '#rajan1996'
+  }
+});
+
+
+
 app.get('/',(req,res) => {
 	
 	var myObj = JSON.parse(fs.readFileSync('utils/home-description.json'));
@@ -65,10 +77,29 @@ app.get('/Team', (req,res) => {
 	});
 });
 
-app.get('/Test',(req,res) => {
+app.get('/Contacts',(req,res) => {
+	var email = req.query.email;
+	var subject = req.query.subject;
+	var message = `New message from ${email} says \
+					 ${req.query.message}`;
+	var mailOptions = {
+  		from: email,
+  		to: 'troy0870@gmail.com',
+  		subject,
+  		text: message
+	};
+	if(email && subject && message){
+		transporter.sendMail(mailOptions, (error, info) => {
+  			if (error) {
+    			console.log(error);
+  			} else {
+    			console.log('Email sent: ' + info.response);
+  			}
+		});
+	}
 
-	res.render('test.hbs',{
-		
+	res.render('contacts.hbs',{
+		pageTitle:'Contact Us'
 	});
 });
 
