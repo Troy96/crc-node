@@ -15,15 +15,15 @@ app.use(express.static(__dirname+'/public'));
 const compression = require('compression');
 app.use(compression());
 
-var nodemailer = require('nodemailer');
+/*var nodemailer = require('nodemailer');
 
 var transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: 'troy0870@gmail.com',
-    pass: '#rajan1996'
+    user: '@gmail.com',
+    pass: ''
   }
-});
+});*/
 
 
 
@@ -46,7 +46,7 @@ app.get('/Records', (req,res) => {
 		return console.log('Unable to connect to MongoDB Server');
 	}
 		var year = req.query.opt;
-		const db = client.db('invertis');
+		const db = client.db('heroku_v954tbjs');
 		db.collection('Records').find({batch:year}).toArray().then((docs) => {
 			res.render('records.hbs',
 				{
@@ -78,13 +78,13 @@ app.get('/Team', (req,res) => {
 });
 
 app.get('/Contacts',(req,res) => {
-	var email = req.query.email;
+	/*var email = req.query.email;
 	var subject = req.query.subject;
 	var message = `New message from ${email} says \
 					 ${req.query.message}`;
 	var mailOptions = {
   		from: email,
-  		to: 'troy0870@gmail.com',
+  		to: '@gmail.com',
   		subject,
   		text: message
 	};
@@ -96,10 +96,10 @@ app.get('/Contacts',(req,res) => {
     			console.log('Email sent: ' + info.response);
   			}
 		});
-	}
+	}*/
 
-	res.render('contacts.hbs',{
-		pageTitle:'Contact Us'
+	res.render('maintenance.hbs',{
+		
 	});
 });
 
